@@ -1,15 +1,21 @@
 import { FC, PropsWithChildren } from 'react';
+import { TypeSelectorData } from '../../../store/model/typeSelectorData';
 
 const StyleCard: FC<
-  PropsWithChildren<{ tile: string; isSelected: boolean }>
+  PropsWithChildren<TypeSelectorData & { isSelected: boolean }>
 > = (props) => {
+  const backgroundClass = props.isSelected ? 'bg-slate-400' : 'bg-slate-600';
+
   return (
     <>
-      <div className="container px-4 py-4 mx-4 my-4 rounded-md bg-slate-600 relative hover:bg-slate-400 transition ease-in-out duration-300">
+      <div
+        onClick={() => props.updateFn(props.containerValue)}
+        className={`container py-4 rounded-md hover:bg-slate-400 transition ease-in-out duration-300 cursor-pointer ${backgroundClass}`}
+      >
         <label className="block mb-2 text-2xl font-medium text-gray-100 text-center">
           {props.tile}
         </label>
-        <div className="text-center text-md text-gray-400">
+        <div className="text-center text-md text-gray-100 font-medium px-12">
           {props.children}
         </div>
       </div>

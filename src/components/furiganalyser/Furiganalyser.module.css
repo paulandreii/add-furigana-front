@@ -1,0 +1,14 @@
+.horizontal {
+  writing-mode: horizontal-tb;
+  font-size: x-large;
+}
+
+.verticalLR {
+  writing-mode: vertical-lr;
+  font-size: x-large;
+}
+
+.verticalRL {
+  writing-mode: vertical-rl;
+  font-size: x-large;
+}
