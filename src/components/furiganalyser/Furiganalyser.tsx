@@ -53,7 +53,18 @@ const Furiganalyser: React.FC = () => {
     furiganalyserContext.setFile(undefined);
   };
 
-  const downloadHandler = () => {};
+  const downloadHandler = () => {
+    if (!furiganalyserContext.ebook) return;
+
+    const url = URL.createObjectURL(furiganalyserContext.ebook);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', furiganalyserContext.ebook.name);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <>
