@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import StyleCard from '../../UI/StyleCard/StyleCard';
 import { TypeSelectorContent } from '../../../store/model/typeSelectorContent';
+import CustomRowsGrid from '../../UI/CustomRowsGrid/CustomRowsGrid';
 
 const TypeSelector: FC<{ selectionArray: TypeSelectorContent[] }> = (props) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <CustomRowsGrid numberOfColumns={props.selectionArray.length}>
       {props.selectionArray.map((styleCardData) => {
         return (
           <>
@@ -21,7 +22,7 @@ const TypeSelector: FC<{ selectionArray: TypeSelectorContent[] }> = (props) => {
           </>
         );
       })}
-    </div>
+    </CustomRowsGrid>
   );
 };
 
