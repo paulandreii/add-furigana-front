@@ -1,12 +1,16 @@
+import { QueryClientProvider } from '@tanstack/react-query';
 import './App.css';
 import Furiganalyser from './components/furiganalyser/Furiganalyser';
 import FuriganalyserContextProvider from './store/furiganalyser.context';
+import { queryClient } from './http/http';
 
 function App() {
   return (
-    <FuriganalyserContextProvider>
-      <Furiganalyser />
-    </FuriganalyserContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <FuriganalyserContextProvider>
+        <Furiganalyser />
+      </FuriganalyserContextProvider>
+    </QueryClientProvider>
   );
 }
 
