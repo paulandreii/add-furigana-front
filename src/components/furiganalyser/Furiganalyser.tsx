@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import FileUpload from '../UI/FileUpload/FileUpload';
-import TypeSelector from './furiganaTypeSelector/TypeSelector';
+import TypeSelector from './typeSelector/TypeSelector';
 import { FuriganalyserContext } from '../../store/furiganalyser.context';
 import { TypeSelectorContent } from '../../store/model/typeSelectorContent';
 
@@ -28,6 +28,7 @@ const Furiganalyser: React.FC = () => {
 
   const convertFileHandler = () => {
     if (!furiganalyserContext.ebook) setShowError(true);
+    // Make api call to convert ebook, show spinner and download/error page
   };
 
   return (
