@@ -1,7 +1,8 @@
 export type OutputFormat =
-  | 'EPUB'
-  | 'AZW3'
-  | 'MOBI'
-  | 'SingleText'
-  | 'ANKI'
-  | 'HTML';
+  | 'epub'
+  | 'azw3'
+  | 'mobi'
+  | 'many_txt'
+  | 'single_txt'
+  | 'apkg'
+  | 'html';

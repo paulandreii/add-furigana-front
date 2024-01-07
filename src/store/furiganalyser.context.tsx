@@ -3,8 +3,8 @@ import { FuriganaStyle } from './model/furiganaStyle';
 import { WritingStyle } from './model/writingStyle';
 import { OutputFormat } from './model/outputFormat';
 
-type FuriganalyserContextObj = {
-  file: File | undefined;
+export type FuriganalyserContextObj = {
+  ebook: File | undefined;
   furiganaStyle: FuriganaStyle;
   writingStyle: WritingStyle;
   outputFormat: OutputFormat;
@@ -16,10 +16,10 @@ type FuriganalyserContextObj = {
 
 export const FuriganalyserContext =
   React.createContext<FuriganalyserContextObj>({
-    file: undefined,
+    ebook: undefined,
     furiganaStyle: 'Add',
     writingStyle: 'Horizontal',
-    outputFormat: 'EPUB',
+    outputFormat: 'epub',
     setFile: () => {
       return;
     },
@@ -36,7 +36,7 @@ const FuriganalyserContextProvider: React.FC<PropsWithChildren> = (props) => {
   const [file, setFile] = useState<File>();
   const [furiganaStyle, setFuriganaStyle] = useState<FuriganaStyle>('Add');
   const [writingStyle, setWritingStyle] = useState<WritingStyle>('Horizontal');
-  const [outputFormat, setOutputFormat] = useState<OutputFormat>('EPUB');
+  const [outputFormat, setOutputFormat] = useState<OutputFormat>('epub');
 
   const setFileHandler = (file: File | undefined) => {
     setFile(file);
@@ -52,10 +52,11 @@ const FuriganalyserContextProvider: React.FC<PropsWithChildren> = (props) => {
 
   const setOutputFormatHandler = (outputFormat: OutputFormat) => {
     setOutputFormat(outputFormat);
+    console.log(outputFormat);
   };
 
   const contextValue: FuriganalyserContextObj = {
-    file: file,
+    ebook: file,
     furiganaStyle: furiganaStyle,
     writingStyle: writingStyle,
     outputFormat: outputFormat,

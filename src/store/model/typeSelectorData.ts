@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FuriganaStyle } from './furiganaStyle';
 import { WritingStyle } from './writingStyle';
 
