@@ -16,19 +16,20 @@ import ConversionSuccess from './conversionSuccess/ConversionSuccess';
 import { useMutation } from '@tanstack/react-query';
 import { convertFile } from '../../http/http';
 import Spinner from '../UI/Spinner/Spinner';
+import { ConversionResponse } from '../../store/model/conversionResponse';
 
 const Furiganalyser: React.FC = () => {
+  const furiganalyserContext = useContext(FuriganalyserContext);
   const [showError, setShowError] = useState(false);
   const [isConvertingPage, setIsConvertingPage] = useState(true);
 
   const { mutate, isPending, isError, isSuccess } = useMutation({
     mutationFn: convertFile,
-    onSuccess: () => {
-      //Setear file del context con el valor convertido
+    onSuccess: (data: ConversionResponse) => {
+      furiganalyserContext.setConvertedFile(data.uid);
     },
   });
 
-  const furiganalyserContext = useContext(FuriganalyserContext);
   const furiganaSelectorContent: TypeSelectorContent[] =
     getFuriganaSelectorOptions(furiganalyserContext);
 
@@ -45,7 +46,16 @@ const Furiganalyser: React.FC = () => {
       return;
     }
     setIsConvertingPage(false);
-    mutate();
+
+    const conversionRequest = {
+      file: furiganalyserContext.ebook,
+      furigana_mode: furiganalyserContext.furiganaStyle,
+      writing_mode: furiganalyserContext.writingStyle,
+      of: furiganalyserContext.outputFormat,
+      redirect: false,
+    };
+
+    mutate(conversionRequest);
   };
 
   const backHandler = () => {
@@ -54,16 +64,22 @@ const Furiganalyser: React.FC = () => {
   };
 
   const downloadHandler = () => {
-    if (!furiganalyserContext.ebook) return;
+    if (!furiganalyserContext.convertedFileId) return;
+    try {
+      const fileUrl = `http://vps-47726545.vps.ovh.net:5000/jobs/${furiganalyserContext.convertedFileId}/file`;
 
-    const url = URL.createObjectURL(furiganalyserContext.ebook);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', furiganalyserContext.ebook.name);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+      const link = document.createElement('a');
+      link.href = fileUrl;
+
+      link.setAttribute('download', '');
+
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error al descargar el archivo:', error);
+    }
   };
 
   return (

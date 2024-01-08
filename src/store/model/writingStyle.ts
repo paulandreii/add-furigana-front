@@ -1,1 +1,1 @@
-export type WritingStyle = 'Horizontal' | 'VerticalRL' | 'VerticalLR';
+export type WritingStyle = 'horizontal-tb' | 'vertical-rl' | 'vertical-lr';

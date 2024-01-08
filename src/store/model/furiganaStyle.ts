@@ -1,1 +1,1 @@
-export type FuriganaStyle = 'Add' | 'Override' | 'Remove';
+export type FuriganaStyle = 'add' | 'replace' | 'remove';

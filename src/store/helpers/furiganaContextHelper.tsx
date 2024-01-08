@@ -7,7 +7,7 @@ export function getFuriganaSelectorOptions(
   const furiganaSelectorContent: TypeSelectorContent[] = [
     {
       tile: 'Add',
-      containerValue: 'Add',
+      containerValue: 'add',
       updateFn: furiganalyserContext.setFuriganaStyle,
       typeOfStyle: furiganalyserContext.furiganaStyle,
       innerContent: (
@@ -24,7 +24,7 @@ export function getFuriganaSelectorOptions(
     },
     {
       tile: 'Override',
-      containerValue: 'Override',
+      containerValue: 'replace',
       updateFn: furiganalyserContext.setFuriganaStyle,
       typeOfStyle: furiganalyserContext.furiganaStyle,
       innerContent: (
@@ -41,7 +41,7 @@ export function getFuriganaSelectorOptions(
     },
     {
       tile: 'Remove',
-      containerValue: 'Remove',
+      containerValue: 'remove',
       updateFn: furiganalyserContext.setFuriganaStyle,
       typeOfStyle: furiganalyserContext.furiganaStyle,
       innerContent: <>次の駅</>,
@@ -58,7 +58,7 @@ export function getWritingStyleOptions(
   const writingSelectorContent: TypeSelectorContent[] = [
     {
       tile: 'Horizontal',
-      containerValue: 'Horizontal',
+      containerValue: 'horizontal-tb',
       updateFn: furiganalyserContext.setWritingStyle,
       typeOfStyle: furiganalyserContext.writingStyle,
       innerContent: (
@@ -73,7 +73,7 @@ export function getWritingStyleOptions(
     },
     {
       tile: 'Vertical, Right to Reft',
-      containerValue: 'VerticalRL',
+      containerValue: 'vertical-rl',
       updateFn: furiganalyserContext.setWritingStyle,
       typeOfStyle: furiganalyserContext.writingStyle,
       innerContent: (
@@ -90,7 +90,7 @@ export function getWritingStyleOptions(
     },
     {
       tile: 'Vertical, Left to Right',
-      containerValue: 'VerticalLR',
+      containerValue: 'vertical-lr',
       updateFn: furiganalyserContext.setWritingStyle,
       typeOfStyle: furiganalyserContext.writingStyle,
       innerContent: (
