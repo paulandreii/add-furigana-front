@@ -1,6 +1,6 @@
 {
-  "name": "@react/source",
-  "version": "0.0.0",
+  "name": "add-furigana-front",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
