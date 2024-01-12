@@ -13,6 +13,7 @@ export async function convertFile(
       'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
     };
+    console.log(fileConversionData);
 
     const response = await axios.post<ConversionResponse>(
       'http://vps-47726545.vps.ovh.net:5000/submit',
